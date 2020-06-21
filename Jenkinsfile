@@ -48,12 +48,5 @@ pipeline {
                 }
             }
         }
-        stage('Remove local images') {
-            steps {
-                echo '=== Delete the local docker images ==='
-                sh("docker rmi -f nicholasgull/petclinic-spinnaker-jenkins:latest || :")
-                sh("docker rmi -f nicholasgull/petclinic-spinnaker-jenkins:$SHORT_COMMIT || :")
-            }
-        }
     }
 }
