@@ -10,16 +10,6 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package' 
             }
         }
-        stage ('Vulnerability Test'){
-          steps{
-              dir('/home/ubuntu/GITHUBREPOS/JAVA-MVN/NEWPETCLINIC/petclinic-spinnaker-jenkins')
-            {
-              sh "pwd"
-              sh "/usr/local/bin/snyk monitor"
-              snykSecurity organisation: 'nickgulrajani', snykInstallation: 'snyk', snykTokenId: 'snyktoken'
-            }
-      }
-      }
         stage('Test Application') {
             steps {
                 echo '=== Testing Petclinic Application ==='
